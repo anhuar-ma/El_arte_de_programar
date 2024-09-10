@@ -7,27 +7,27 @@ Exercises
 3. How would you move the food?
 4. Change the snake to respond to mouse clicks.
 """
-
 from random import randrange, choice
 from turtle import *
-
 from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+# Lista de colores sin incluir el rojo
+colors = ['blue', 'green', 'yellow', 'purple', 'orange']
+# Elegimos un color aleatorio una vez para toda la partida
+snake_color = choice(colors)
 
 def change(x, y):
     """Change snake direction."""
     aim.x = x
     aim.y = y
 
-
 def inside(head):
     """Return True if head inside boundaries."""
     return -200 < head.x < 190 and -200 < head.y < 190
-
 
 def move():
     """Move snake forward one segment."""
@@ -35,7 +35,7 @@ def move():
     head.move(aim)
 
     if not inside(head) or head in snake:
-        square(head.x, head.y, 9, 'red')
+        square(head.x, head.y, 9, 'red')  # La serpiente se pinta de rojo si choca
         update()
         return
 
@@ -55,13 +55,13 @@ def move():
 
     clear()
 
+    # Usamos el color fijo seleccionado al inicio
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, snake_color)  # Dibuja la serpiente con el color fijo
 
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 100)
-
 
 setup(420, 420, 370, 0)
 hideturtle()
