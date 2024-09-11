@@ -19,6 +19,7 @@ aim = vector(0, -10)
 colors = ['blue', 'green', 'yellow', 'purple', 'orange']
 # Elegimos un color aleatorio una vez para toda la partida
 snake_color = choice(colors)
+food_color = choice(colors)
 
 def change(x, y):
     """Change snake direction."""
@@ -59,7 +60,7 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, snake_color)  # Dibuja la serpiente con el color fijo
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, food_color)
     update()
     ontimer(move, 100)
 
