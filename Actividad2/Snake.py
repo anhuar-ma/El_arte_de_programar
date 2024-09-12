@@ -1,11 +1,10 @@
 """Snake, classic arcade game.
 
-Exercises
+Ejericicios
 
-1. How do you make the snake faster or slower?
-2. How can you make the snake go around the edges?
-3. How would you move the food?
-4. Change the snake to respond to mouse clicks.
+1. La comida podrá moverse al azar un paso a la vez y no deberá de salirse de la ventana
+2. Cada vez que se corra el juego, la víbora deberá tener colores diferentes, al azar, de una serie de 5 diferentes colores, excepto el rojo.
+3. Cada vez que se corra el juego, la comida deberá tener colores diferentes, al azar, de una serie de 5 diferentes colores, excepto el rojo.
 """
 from random import randrange, choice
 from turtle import *
@@ -15,9 +14,7 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
-# Lista de colores sin incluir el rojo
 colors = ['blue', 'green', 'yellow', 'purple', 'orange']
-# Elegimos un color aleatorio una vez para toda la partida
 snake_color = choice(colors)
 food_color = choice(colors)
 
@@ -46,10 +43,12 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
+        # Posicionamiento aleatorio de la comida. Autor: Anhuar Maldonado 
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
     else:
         snake.pop(0)
+        # Posicionamiento aleatorio de la comida. Autor: Anhuar Maldonado 
         random_direction = choice(directions)
         food.x += random_direction.x
         food.y += random_direction.y
@@ -58,9 +57,9 @@ def move():
 
     # Usamos el color fijo seleccionado al inicio
     for body in snake:
-        square(body.x, body.y, 9, snake_color)  # Dibuja la serpiente con el color fijo
+        square(body.x, body.y, 9, snake_color)  # Dibuja la serpiente con el color fijo. Autor: Javier Cuatepotzo
 
-    square(food.x, food.y, 9, food_color)
+    square(food.x, food.y, 9, food_color)  # Dibuja la comida con el color fijo. Autor: Bruno Zamora 
     update()
     ontimer(move, 100)
 
