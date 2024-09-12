@@ -11,8 +11,9 @@ Exercises
 
 from random import choice
 from turtle import *
-
+from math import sqrt
 from freegames import floor, vector
+
 
 state = {'score': 0}
 path = Turtle(visible=False)
@@ -20,10 +21,10 @@ writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
 ghosts = [
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
-    [vector(100, -160), vector(-5, 0)],
+    [vector(-180, 160), vector(1, 0)],
+    [vector(-180, -160), vector(0, 1)],
+    [vector(100, 160), vector(0, -1)],
+    [vector(100, -160), vector(-1, 0)],
 ]
 # fmt: off
 tiles = [
@@ -106,6 +107,26 @@ def world():
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'black')
 
+def best_option(point, pacman):
+    "Checar las posiciones del pacman para que el fantasma se mueva en el rango. Autor: Juan Daniel"
+    options = [
+        vector(5, 0),
+        vector(-5, 0),
+        vector(0, 5),
+        vector(0, -5)
+    ]
+
+    min_distance = 1000
+    best_option = vector(0, 5)
+    for option in options:
+        if valid(point + option):
+            distance = sqrt((pacman.x - (point.x + option[0]))**2 + (pacman.y - (point.y + option[1]))**2)
+            if distance < min_distance:
+                min_distance = distance
+                best_option = option
+
+    return best_option
+
 
 def move():
     """Move pacman and all ghosts."""
@@ -134,17 +155,15 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
-            options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
-            ]
-            plan = choice(options)
+            plan = best_option(point,pacman)
             course.x = plan.x
             course.y = plan.y
 
         up()
+        print("Point")
+        print(point)
+        print("Course")
+        print(course)
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
 
