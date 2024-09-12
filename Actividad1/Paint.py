@@ -1,12 +1,12 @@
 """Paint, for drawing shapes.
 
-Exercises
+Ejericicios
 
-1. Add a color.
-2. Complete circle.
-3. Complete rectangle.
-4. Complete triangle.
-5. Add width parameter.
+1. Un color nuevo
+2. Dibujar un círculo
+3. Completar el rectángulo
+4. Completar el triángulo
+5. Agregar una función para dibujar un pentágono
 """
 
 from turtle import *
@@ -14,7 +14,6 @@ from freegames import vector
 
 
 def line(start, end):
-    """Draw line from start to end with a random color from a predefined list."""
     up()
     goto(start.x, start.y)
     down()
@@ -22,7 +21,6 @@ def line(start, end):
 
 
 def square(start, end):
-    """Draw square from start to end."""
     up()
     goto(start.x, start.y)
     down()
@@ -36,7 +34,7 @@ def square(start, end):
 
 
 def circle(start, end):
-    """Draw circle from start to end."""
+    """2. Funcion para dibujar un circulo . Autor: Bruno Zamora"""
     up()
     goto(start.x, start.y)
     down()
@@ -49,28 +47,27 @@ def circle(start, end):
 
 
 def rectangle(start, end):
-    """Draw rectangle from start to end."""
+    """3. Funcion para dibujar un rectangulo. Autor: Javier Cuatepotzo"""
     up()
     goto(start.x, start.y)
     down()
     begin_fill()
 
-    # Calcular los lados del rectángulo
     width = end.x - start.x
     height = end.y - start.y
 
-    # Dibujar el rectángulo
+
     for count in range(2):
-        forward(width)  # Lado superior/inferior
+        forward(width) 
         left(90)
-        forward(height)  # Lado izquierdo/derecho
+        forward(height)  
         left(90)
 
     end_fill()
 
 
 def pentagon(start, end):
-    """Draw square from start to end."""
+    """4. Funcion para dibujar un pentagono. Autor: Anhuar Maldonado"""
     up()
     goto(start.x, start.y)
     down()
@@ -83,7 +80,7 @@ def pentagon(start, end):
     end_fill()
 
 def triangle(start, end):
-    """Draw triangle from start to end."""
+    """5. Funcion para dibujar un triangulo. Autor: Javier Cuatepotzo"""
     up()
     goto(start.x, start.y)
     down()
@@ -96,7 +93,6 @@ def triangle(start, end):
     end_fill()
 
 def tap(x, y):
-    """Store starting point or draw shape."""
     start = state['start']
 
     if start is None:
@@ -123,6 +119,7 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+"""1. Color Magenta agregado. Autor: Bruno Zamora"""
 onkey(lambda: color('magenta'), 'M')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
