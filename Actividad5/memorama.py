@@ -1,13 +1,3 @@
-"""Memory, puzzle game of number pairs.
-
-Exercises:
-
-1. Count and print how many taps occur.
-2. Decrease the number of tiles to a 4x4 grid.
-3. Detect when all tiles are revealed.
-4. Center single-digit tile.
-5. Use letters instead of tiles.
-"""
 from random import *
 from turtle import *
 
@@ -75,6 +65,13 @@ def draw():
         color('black')
         write(tiles[mark], align="center", font=('Arial', 20, 'normal'))  # Centrar el número
 
+    # Detectar si todos los cuadros han sido revelados
+    if all(not hidden for hidden in hide):
+        up()
+        goto(0, 0)
+        color('white')
+        write("¡Juego completado!", align="center", font=('Arial', 30, 'bold'))
+    
     update()
     ontimer(draw, 100)
 
