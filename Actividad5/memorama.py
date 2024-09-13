@@ -66,7 +66,7 @@ def draw():
         goto(x + 25, y + 13)  # Ajuste para centrar el número en el cuadrado
         color('black')
         """4.Utilizar algo diferente a los dígitos para resolver el juego. Autor: Anhuar Maldonado"""
-        write(tiles[mark], align="center", font=('Arial', 20, 'normal'))  # Centrar el número
+        write(chr(tiles[mark] + 65), align="center", font=('Arial', 20, 'normal'))  # Centrar el número
 
     # Detectar si todos los cuadros han sido revelados
     """2.Detectar cuando todos los cuadros se han destapado. Autor: Bruno Zamora"""
