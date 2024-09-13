@@ -19,10 +19,10 @@ writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
 ghosts = [
-    [vector(-180, 160), vector(1, 0)],
-    [vector(-180, -160), vector(0, 1)],
-    [vector(100, 160), vector(0, -1)],
-    [vector(100, -160), vector(-1, 0)],
+    [vector(-180, 160), vector(10, 0)],
+    [vector(-180, -160), vector(0, 10)],
+    [vector(100, 160), vector(0, -10)],
+    [vector(100, -160), vector(-10, 0)],
 ]
 # fmt: off
 # 1. Modificacion del tablero. Autor: Javier Cuatepotzo 
