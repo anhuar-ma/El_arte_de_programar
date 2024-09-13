@@ -63,7 +63,8 @@ def draw():
         up()
         goto(x + 25, y + 13)  # Ajuste para centrar el número en el cuadrado
         color('black')
-        write(tiles[mark], align="center", font=('Arial', 20, 'normal'))  # Centrar el número
+        # Se convierte el número a simbolo y se imprime en el cuadro
+        write(chr(tiles[mark] + 65), align="center", font=('Arial', 20, 'normal'))  # Centrar el número
 
     # Detectar si todos los cuadros han sido revelados
     if all(not hidden for hidden in hide):
