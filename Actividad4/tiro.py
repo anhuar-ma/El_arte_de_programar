@@ -76,7 +76,8 @@ def move():
 
     for target in targets:
         if not inside(target):
-            return
+            targets.remove(target)
+            targets.append(vector(200, randrange(-150, 150)))
 
     ontimer(move, 10)
 
