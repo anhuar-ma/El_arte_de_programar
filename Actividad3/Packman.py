@@ -2,11 +2,9 @@
 
 Exercises
 
-1. Change the board.
-2. Change the number of ghosts.
-3. Change where pacman starts.
-4. Make the ghosts faster/slower.
-5. Make the ghosts smarter.
+1. Cambiar el tablero
+2. Los fantasmas sean más listos
+3. Hacer que los fantasmas vayan mas rápido
 """
 
 from random import choice
@@ -21,12 +19,13 @@ writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
 ghosts = [
-    [vector(-180, 160), vector(1, 0)],
-    [vector(-180, -160), vector(0, 1)],
-    [vector(100, 160), vector(0, -1)],
-    [vector(100, -160), vector(-1, 0)],
+    [vector(-180, 160), vector(10, 0)],
+    [vector(-180, -160), vector(0, 10)],
+    [vector(100, 160), vector(0, -10)],
+    [vector(100, -160), vector(-10, 0)],
 ]
 # fmt: off
+# 1. Modificacion del tablero. Autor: Javier Cuatepotzo 
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -91,6 +90,7 @@ def valid(point):
 
 def world():
     """Draw world using path."""
+    # 1. Modificacion del tablero. Autor: Javier Cuatepotzo 
     bgcolor('black')
     path.color('white')
 
@@ -106,9 +106,8 @@ def world():
                 path.up()
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'black')
-
+# funcion para Los fantasmas sean más listos. Autor: Anhuar Maldonado
 def best_option(point, pacman):
-    "Checar las posiciones del pacman para que el fantasma se mueva en el rango. Autor: Juan Daniel"
     options = [
         vector(5, 0),
         vector(-5, 0),
@@ -155,6 +154,7 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
+            # funcion para Los fantasmas sean más listos. Autor: Anhuar Maldonado
             plan = best_option(point,pacman)
             course.x = plan.x
             course.y = plan.y
@@ -172,7 +172,7 @@ def move():
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
-
+# Hacer que los fantasmas vayan mas rápido. Autor: Bruno Zamora
     ontimer(move, 1)
 
 
