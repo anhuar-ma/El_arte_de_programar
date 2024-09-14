@@ -34,6 +34,7 @@ def tap(x, y):
     global tap_count  # Declarar la variable global
     spot = index(x, y)
     mark = state['mark']
+    """1.Contar y desplegar el numero de taps. Autor: Javier Cuatepotzo"""
     tap_count += 1  # Incrementar el conteo de taps
     print(f'Taps: {tap_count}')  # Imprimir el conteo de taps en la consola
 
@@ -61,12 +62,14 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
+        """3.Central el dígito en el cuadro. Autor: Javier Cuatepotzo"""
         goto(x + 25, y + 13)  # Ajuste para centrar el número en el cuadrado
         color('black')
-        # Se convierte el número a simbolo y se imprime en el cuadro
-        write(chr(tiles[mark] + 65), align="center", font=('Arial', 20, 'normal'))  # Centrar el número
+        """4.Utilizar algo diferente a los dígitos para resolver el juego. Autor: Anhuar Maldonado"""
+        write(tiles[mark], align="center", font=('Arial', 20, 'normal'))  # Centrar el número
 
     # Detectar si todos los cuadros han sido revelados
+    """2.Detectar cuando todos los cuadros se han destapado. Autor: Bruno Zamora"""
     if all(not hidden for hidden in hide):
         up()
         goto(0, 0)
