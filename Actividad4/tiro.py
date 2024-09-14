@@ -40,7 +40,7 @@ def draw_hexagon(size, color):
 def draw():
     """Draw ball and targets."""
     clear()
-
+    """7.Funcion para cambiar la figura de los proyectiles y el color del proyectil y los balones. Autor: Javier Cuatepotzo"""
     for target in targets:
         goto(target.x, target.y)
         draw_square(20, 'black')  # Los balones son cuadrados amarillos
@@ -77,9 +77,11 @@ def move():
     for target in targets:
         if not inside(target):
             #se elimina el target y se agrega uno nuevo
+            """6.Funcion para hacer que el juego nunca termine, de manera que los balones al salir de la ventana se re posicionen. Autor: Anhuar Maldonado"""
             targets.remove(target)
             targets.append(vector(200, randrange(-150, 150)))
 
+    """5.La velocidad del movimiento para el proyectil y los balones sea más rápida . Autor: Bruno Zamora"""
     ontimer(move, 10)
 
 setup(420, 420, 370, 0)
